@@ -1,0 +1,5 @@
+{
+    "db": "mongodb://localhost/AbeerTech",
+    "jwtPrivateKey": "hello",
+    "myenvironment":"Development"
+  }
