@@ -8,6 +8,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/api/users");
 var productsRouter = require("./routes/api/products");
 var samsungRouter = require("./routes/api/Samsung")
+var allbrandRouter = require("./routes/api/allbrand")
 var config = require("config");
 var cors = require('cors');
 
@@ -27,7 +28,7 @@ app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/samsung",samsungRouter);
-
+app.use("/api/allbrand",allbrandRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
