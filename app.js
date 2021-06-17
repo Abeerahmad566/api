@@ -7,8 +7,10 @@ var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/api/users");
 var productsRouter = require("./routes/api/products");
+var samsungRouter = require("./routes/api/Samsung")
 var config = require("config");
 var cors = require('cors');
+
 var app = express();
 app.use(cors());
 // view engine setup
@@ -24,6 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
+app.use("/api/samsung",samsungRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
