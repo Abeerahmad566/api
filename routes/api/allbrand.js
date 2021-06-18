@@ -7,10 +7,7 @@ const {AllBrand} = require("../../models/allbrand");
 //get products
 router.get("/",async (req, res) => {
   console.log(req.user);
-  let page = Number(req.query.page ? req.query.page : 1);
-  let perPage = Number(req.query.perPage ? req.query.perPage : 10);
-  let skipRecords = perPage * (page - 1);
-  let allbrands = await AllBrand.find().skip(skipRecords).limit(perPage);
+  let allbrands = await AllBrand.find();
   return res.send(allbrands);
 });
 //get single products
