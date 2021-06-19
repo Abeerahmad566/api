@@ -4,6 +4,7 @@ var samsungSchema = mongoose.Schema({
   name: String,
   price: Number,
   picture: String,
+  technology:String,
 });
 var Samsung = mongoose.model("Samsung", samsungSchema);
 

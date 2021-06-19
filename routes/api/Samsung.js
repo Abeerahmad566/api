@@ -30,6 +30,7 @@ router.put("/:id",  async (req, res) => {
   samsung.name = req.body.name;
   samsung.price = req.body.price;
   samsung.price = req.body.picture;
+  samsung.technology= req.body.technology;
   await samsung.save();
   return res.send(samsung);
 });
@@ -44,6 +45,7 @@ router.post("/", async (req, res) => {
   samsung.name = req.body.name;
   samsung.price = req.body.price;
   samsung.price = req.body.picture;
+  samsung.technology= req.body.technology;
   await samsung.save();
   return res.send(samsung);
 });
