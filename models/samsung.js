@@ -3,6 +3,7 @@ const Joi = require("@hapi/joi");
 var samsungSchema = mongoose.Schema({
   name: String,
   price: Number,
+  picture: String,
 });
 var Samsung = mongoose.model("Samsung", samsungSchema);
 

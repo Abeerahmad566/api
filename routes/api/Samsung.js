@@ -29,6 +29,7 @@ router.put("/:id",  async (req, res) => {
   let samsung = await Samsung.findById(req.params.id);
   samsung.name = req.body.name;
   samsung.price = req.body.price;
+  samsung.price = req.body.picture;
   await samsung.save();
   return res.send(samsung);
 });
@@ -42,6 +43,7 @@ router.post("/", async (req, res) => {
   let samsung = new Samsung();
   samsung.name = req.body.name;
   samsung.price = req.body.price;
+  samsung.price = req.body.picture;
   await samsung.save();
   return res.send(samsung);
 });
