@@ -4,6 +4,8 @@ const validateProduct = require("../../middleWares/validateProduct");
 const auth = require("../../middleWares/auth");
 const admin = require("../../middleWares/admin");
 const {Product} = require("../../models/product")
+
+
 //get products
 router.get("/",async (req, res) => {
   console.log(req.user);
@@ -29,6 +31,7 @@ router.put("/:id",  async (req, res) => {
   let product = await Product.findById(req.params.id);
   product.name = req.body.name;
   product.price = req.body.price;
+  products.picture = req.body.picture;
   await product.save();
   return res.send(product);
 });
@@ -38,10 +41,11 @@ router.delete("/:id", async (req, res) => {
   return res.send(product);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",async (req, res) => {
   let product = new Product();
   product.name = req.body.name;
   product.price = req.body.price;
+  products.picture = req.body.picture;
   await product.save();
   return res.send(product);
 });
