@@ -36,7 +36,7 @@ router.put("/:id",  async (req, res) => {
   return res.send(product);
 });
 //delete a record
-router.delete("/:id", async (req, res) => {
+router.DELETE("/id", async (req, res) => {
   let product = await Product.findByIdAndDelete(req.params.id);
   return res.send(product);
 });
