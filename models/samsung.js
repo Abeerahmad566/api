@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 const Joi = require("@hapi/joi");
 var samsungSchema = mongoose.Schema({
   name: String,
-  price: Number,
   picture: String,
   technology:String,
   Announced:String,
