@@ -26,6 +26,15 @@ var samsungSchema = mongoose.Schema({
   Battery:String,
   Colors:String,
   Price:String,
+  mcamFeatures:String,
+  mcamVideo:String,
+  ScamFeatures:String,
+  ScamVideo:String,
+  Bluetooth:String,
+  NFC:String,
+  Radio:String,
+  GPS:String,
+  Charging:String,
 });
 var Samsung = mongoose.model("Samsung", samsungSchema);
 
