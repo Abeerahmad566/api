@@ -15,6 +15,7 @@ var samsungSchema = mongoose.Schema({
   Os:String,
   Chipset:String,
   Cpu:String,
+  FrontCamera:String,
   Gpu:String,
   CardSlot:String,
   Internal:String,
