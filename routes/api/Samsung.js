@@ -28,8 +28,8 @@ router.get("/:id", async (req, res) => {
 router.put("/:id",  async (req, res) => {
   let samsung = await Samsung.findById(req.params.id);
   samsung.name = req.body.name;
-  samsung.price = req.body.price;
-  samsung.price = req.body.picture;
+  samsung.Price = req.body.Price;
+  samsung.picture = req.body.picture;
   samsung.technology= req.body.technology;
   await samsung.save();
   return res.send(samsung);
@@ -43,8 +43,8 @@ router.delete("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   let samsung = new Samsung();
   samsung.name = req.body.name;
-  samsung.price = req.body.price;
-  samsung.price = req.body.picture;
+  samsung.Price = req.body.Price;
+  samsung.picture = req.body.picture;
   samsung.technology= req.body.technology;
   await samsung.save();
   return res.send(samsung);
