@@ -6,7 +6,6 @@ var samsungSchema = mongoose.Schema({
   picture: String,
   technology:String,
   Announced:String,
-  Status:String,
   Dimension:String,
   Weight:String,
   Build:String,
