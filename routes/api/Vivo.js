@@ -3,7 +3,7 @@ let router = express.Router();
 const validateProduct = require("../../middleWares/validateProduct");
 const auth = require("../../middleWares/auth");
 const admin = require("../../middleWares/admin");
-const {Vivo} = require("../../models/Vivo");
+const { Vivo } = require("../../models/Vivo");
 //get products
 router.get("/",async (req, res) => {
   console.log(req.user);
