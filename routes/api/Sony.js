@@ -16,37 +16,37 @@ router.get("/",async (req, res) => {
 //get single products
 router.get("/:id", async (req, res) => {
   try {
-    let sonny = await Sony.findById(req.params.id);
-    if (!sonny)
+    let sony = await Sony.findById(req.params.id);
+    if (!sony)
       return res.status(400).send("Product With given ID is not present"); //when id is not present id db
-    return res.send(sonny); //everything is ok
+    return res.send(sony); //everything is ok
   } catch (err) {
     return res.status(400).send("Invalid ID"); // format of id is not correct
   }
 });
 //update a record
 router.put("/:id",  async (req, res) => {
-  let sonny = await Sony.findById(req.params.id);
-  sonny.name = req.body.name;
-  sonny.Price = req.body.Price;
-  sonny.picture = req.body.picture;
-  sonny.technology= req.body.technology;
-  await sonny.save();
-  return res.send(sonny);
+  let sony = await Sony.findById(req.params.id);
+  sony.name = req.body.name;
+  sony.Price = req.body.Price;
+  sony.picture = req.body.picture;
+  sony.technology= req.body.technology;
+  await sony.save();
+  return res.send(sony);
 });
 //delete a record
 router.delete("/:id", async (req, res) => {
-  let sonny = await Sony.findByIdAndDelete(req.params.id);
-  return res.send(sonny);
+  let sony = await Sony.findByIdAndDelete(req.params.id);
+  return res.send(sony);
 });
 //Insert a record
 router.post("/", async (req, res) => {
-  let sonny = new Sony();
-  sonny.name = req.body.name;
-  sonny.Price = req.body.Price;
-  sonny.picture = req.body.picture;
-  sonny.technology= req.body.technology;
-  await sonny.save();
-  return res.send(sonny);
+  let sony = new Sony();
+  sony.name = req.body.name;
+  sony.Price = req.body.Price;
+  sony.picture = req.body.picture;
+  sony.technology= req.body.technology;
+  await sony.save();
+  return res.send(sony);
 });
 module.exports = router;

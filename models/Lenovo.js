@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 const Joi = require("@hapi/joi");
-var InfinixSchema = mongoose.Schema({
+var LenovoSchema = mongoose.Schema({
   name: String,
   picture: String,
   technology:String,
@@ -36,7 +36,7 @@ var InfinixSchema = mongoose.Schema({
   GPS:String,
   Charging:String,
 });
-var Infinix = mongoose.model("Infinix", InfinixSchema);
+var Lenovo = mongoose.model("Lenovo", LenovoSchema);
 
 function validateProduct(data) {
   const schema = Joi.object({
@@ -45,4 +45,4 @@ function validateProduct(data) {
   });
   return schema.validate(data, { abortEarly: false });
 }
-module.exports = {Infinix,validateProduct}
+module.exports = {Lenovo,validateProduct}
