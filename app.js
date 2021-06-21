@@ -24,7 +24,7 @@ var pocoRouter = require("./routes/api/Poco");
 var realmeRouter = require("./routes/api/Realme");
 var vivoRouter = require("./routes/api/Vivo");
 var xiaomiRouter = require("./routes/api/Xiaomi");
-var sonyRouter = require("./routes/api/Sony");
+var technoRouter = require("./routes/api/Techno");
 
 
 var config = require("config");
@@ -48,7 +48,7 @@ app.use("/api/products", productsRouter);
 app.use("/api/samsung",samsungRouter);
 app.use("/api/Apple",appleRouter);
 app.use("/api/Asus",asusRouter);
-app.use("/api/Sony",sonyRouter);
+app.use("/api/Techno",technoRouter);
 app.use("/api/Google",googleRouter);
 app.use("/api/HTC",htcRouter);
 app.use("/api/Huawei",huaweiRouter);
