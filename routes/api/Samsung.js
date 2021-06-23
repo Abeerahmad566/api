@@ -70,7 +70,7 @@ router.delete("/:id", async (req, res) => {
   return res.send(samsung);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.pOst("/", async (req, res) => {
   let samsung = new Samsung();
   samsung.name = req.body.name;
   samsung.Price = req.body.Price;
