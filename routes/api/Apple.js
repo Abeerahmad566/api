@@ -25,7 +25,7 @@ router.get("/:id" ,async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",async (req, res) => {
+router.put("/:id",admin,async (req, res) => {
   let apple = await Apple.findById(req.params.id);
   apple.name = req.body.name;
   apple.Price = req.body.Price;
@@ -66,12 +66,12 @@ router.put("/:id",async (req, res) => {
   return res.send(apple);
 });
 //delete a record
-router.delete("/:id",async (req, res) => {
+router.delete("/:id",admin,async (req, res) => {
   let apple = await Apple.findByIdAndDelete(req.params.id);
   return res.send(apple);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",admin, async (req, res) => {
   let apple = new Apple();
   apple.name = req.body.name;
   apple.Price = req.body.Price;
