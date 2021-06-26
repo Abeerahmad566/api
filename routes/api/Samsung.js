@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(samsungs);
 });
 //get single products
-router.get("/:id", async (req, res) => {
+router.get("/:id",auth, async (req, res) => {
   try {
     let samsung = await Samsung.findById(req.params.id);
     if (!samsung)
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",  async (req, res) => {
+router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   let samsung = await Samsung.findById(req.params.id);
   samsung.name = req.body.name;
   samsung.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",  async (req, res) => {
   return res.send(samsung);
 });
 //delete a record
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",auth,admin, async (req, res) => {
   let samsung = await Samsung.findByIdAndDelete(req.params.id);
   return res.send(samsung);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",validateProduct,auth,admin, async (req, res) => {
   let samsung = new Samsung();
   samsung.name = req.body.name;
   samsung.Price = req.body.Price;

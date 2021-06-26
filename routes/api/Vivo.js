@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(vivos);
 });
 //get single products
-router.get("/:id", async (req, res) => {
+router.get("/:id",auth, async (req, res) => {
   try {
     let vivo = await Vivo.findById(req.params.id);
     if (!vivo)
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",  async (req, res) => {
+router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   let vivo = await Vivo.findById(req.params.id);
   vivo.name = req.body.name;
   vivo.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",  async (req, res) => {
   return res.send(vivo);
 });
 //delete a record
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",auth,admin, async (req, res) => {
   let vivo = await Vivo.findByIdAndDelete(req.params.id);
   return res.send(vivo);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",validateProduct,auth,admin, async (req, res) => {
   let vivo = new Vivo();
   vivo.name = req.body.name;
   vivo.Price = req.body.Price;

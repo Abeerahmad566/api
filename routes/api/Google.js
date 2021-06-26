@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(googles);
 });
 //get single products
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth,async (req, res) => {
   try {
     let google = await Google.findById(req.params.id);
     if (!google)
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",  async (req, res) => {
+router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   let google = await Google.findById(req.params.id);
   google.name = req.body.name;
   google.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",  async (req, res) => {
   return res.send(google);
 });
 //delete a record
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",auth,admin,async (req, res) => {
   let google = await Google.findByIdAndDelete(req.params.id);
   return res.send(google);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",validateProduct,auth,admin, async (req, res) => {
   let google = new Google();
   google.name = req.body.name;
   google.Price = req.body.Price;

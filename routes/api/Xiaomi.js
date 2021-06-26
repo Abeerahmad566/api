@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(xiaomis);
 });
 //get single products
-router.get("/:id", async (req, res) => {
+router.get("/:id",auth, async (req, res) => {
   try {
     let xiaomi = await Xiaomi.findById(req.params.id);
     if (!xiaomi)
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",  async (req, res) => {
+router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   let xiaomi = await Xiaomi.findById(req.params.id);
   xiaomi.name = req.body.name;
   xiaomi.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",  async (req, res) => {
   return res.send(xiaomi);
 });
 //delete a record
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",auth,admin, async (req, res) => {
   let xiaomi = await Xiaomi.findByIdAndDelete(req.params.id);
   return res.send(xiaomi);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",validateProduct,auth,admin, async (req, res) => {
   let xiaomi = new Xiaomi();
   xiaomi.name = req.body.name;
   xiaomi.Price = req.body.Price;

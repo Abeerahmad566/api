@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(realmes);
 });
 //get single products
-router.get("/:id", async (req, res) => {
+router.get("/:id",auth, async (req, res) => {
   try {
     let realme = await Realme.findById(req.params.id);
     if (!realme)
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",  async (req, res) => {
+router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   let realme = await Realme.findById(req.params.id);
   realme.name = req.body.name;
   realme.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",  async (req, res) => {
   return res.send(realme);
 });
 //delete a record
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",auth,admin, async (req, res) => {
   let realme = await Realme.findByIdAndDelete(req.params.id);
   return res.send(realme);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",validateProduct,auth,admin, async (req, res) => {
   let realme = new Realme();
   realme.name = req.body.name;
   realme.Price = req.body.Price;

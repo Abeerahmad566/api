@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(technos);
 });
 //get single products
-router.get("/:id", async (req, res) => {
+router.get("/:id",auth, async (req, res) => {
   try {
     let techno = await Techno.findById(req.params.id);
     if (!techno)
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",  async (req, res) => {
+router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   let techno = await Techno.findById(req.params.id);
   techno.name = req.body.name;
   techno.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",  async (req, res) => {
   return res.send(techno);
 });
 //delete a record
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",auth,admin, async (req, res) => {
   let techno = await Techno.findByIdAndDelete(req.params.id);
   return res.send(techno);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",validateProduct,auth,admin, async (req, res) => {
   let techno = new Techno();
   techno.name = req.body.name;
   techno.Price = req.body.Price;

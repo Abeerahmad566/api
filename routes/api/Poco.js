@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(pocos);
 });
 //get single products
-router.get("/:id", async (req, res) => {
+router.get("/:id",auth, async (req, res) => {
   try {
     let poco = await Poco.findById(req.params.id);
     if (!poco)
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",  async (req, res) => {
+router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   let poco = await Poco.findById(req.params.id);
   poco.name = req.body.name;
   poco.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",  async (req, res) => {
   return res.send(poco);
 });
 //delete a record
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",auth,admin, async (req, res) => {
   let poco = await Poco.findByIdAndDelete(req.params.id);
   return res.send(poco);
 });
 //Insert a record
-router.post("/", async (req, res) => {
+router.post("/",validateProduct,auth,admin, async (req, res) => {
   let poco = new Poco();
   poco.name = req.body.name;
   poco.Price = req.body.Price;
