@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(oppos);
 });
 //get single products
-router.get("/:id",auth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     let oppo = await Oppo.findById(req.params.id);
     if (!oppo)
@@ -25,7 +25,7 @@ router.get("/:id",auth, async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
+router.put("/:id",  async (req, res) => {
   let oppo = await Oppo.findById(req.params.id);
   oppo.name = req.body.name;
   oppo.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   return res.send(oppo);
 });
 //delete a record
-router.delete("/:id",auth,admin, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   let oppo = await Oppo.findByIdAndDelete(req.params.id);
   return res.send(oppo);
 });
 //Insert a record
-router.post("/",validateProduct,auth,admin, async (req, res) => {
+router.post("/", async (req, res) => {
   let oppo = new Oppo();
   oppo.name = req.body.name;
   oppo.Price = req.body.Price;

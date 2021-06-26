@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(lgs);
 });
 //get single products
-router.get("/:id",auth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     let lg = await LG.findById(req.params.id);
     if (!lg)
@@ -25,7 +25,7 @@ router.get("/:id",auth, async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
+router.put("/:id",  async (req, res) => {
   let lg = await LG.findById(req.params.id);
   lg.name = req.body.name;
   lg.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   return res.send(lg);
 });
 //delete a record
-router.delete("/:id",auth,admin,async (req, res) => {
+router.delete("/:id",async (req, res) => {
   let lg = await LG.findByIdAndDelete(req.params.id);
   return res.send(lg);
 });
 //Insert a record
-router.post("/", validateProduct,auth,admin, async(req, res) => {
+router.post("/",  async(req, res) => {
   let lg = new LG();
   lg.name = req.body.name;
   lg.Price = req.body.Price;

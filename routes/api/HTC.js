@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(htcs);
 });
 //get single products
-router.get("/:id", auth,async (req, res) => {
+router.get("/:id",async (req, res) => {
   try {
     let htc = await HTC.findById(req.params.id);
     if (!htc)
@@ -25,7 +25,7 @@ router.get("/:id", auth,async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
+router.put("/:id",  async (req, res) => {
   let htc = await HTC.findById(req.params.id);
   htc.name = req.body.name;
   htc.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",validateProduct,auth,admin,  async (req, res) => {
   return res.send(htc);
 });
 //delete a record
-router.delete("/:id",auth,admin,async (req, res) => {
+router.delete("/:id",async (req, res) => {
   let htc = await HTC.findByIdAndDelete(req.params.id);
   return res.send(htc);
 });
 //Insert a record
-router.post("/", validateProduct,auth,admin,async (req, res) => {
+router.post("/", async (req, res) => {
   let htc = new HTC();
   htc.name = req.body.name;
   htc.Price = req.body.Price;

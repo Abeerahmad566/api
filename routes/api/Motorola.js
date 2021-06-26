@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(motorolas);
 });
 //get single products
-router.get("/:id",auth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     let motorola = await Motorola.findById(req.params.id);
     if (!motorola)
@@ -25,7 +25,7 @@ router.get("/:id",auth, async (req, res) => {
   }
 });
 //update a record
-router.put("/:id", validateProduct,auth,admin, async (req, res) => {
+router.put("/:id",  async (req, res) => {
   let motorola = await Motorola.findById(req.params.id);
   motorola.name = req.body.name;
   motorola.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id", validateProduct,auth,admin, async (req, res) => {
   return res.send(motorola);
 });
 //delete a record
-router.delete("/:id",auth,admin,async (req, res) => {
+router.delete("/:id",async (req, res) => {
   let motorola = await Motorola.findByIdAndDelete(req.params.id);
   return res.send(motorola);
 });
 //Insert a record
-router.post("/", validateProduct,auth,admin,async (req, res) => {
+router.post("/", async (req, res) => {
   let motorola = new Motorola();
   motorola.name = req.body.name;
   motorola.Price = req.body.Price;

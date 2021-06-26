@@ -14,7 +14,7 @@ router.get("/",async (req, res) => {
   return res.send(asuss);
 });
 //get single products
-router.get("/:id", auth,async (req, res) => {
+router.get("/:id",async (req, res) => {
   try {
     let asus = await Asus.findById(req.params.id);
     if (!asus)
@@ -25,7 +25,7 @@ router.get("/:id", auth,async (req, res) => {
   }
 });
 //update a record
-router.put("/:id",validateProduct,auth,admin,async (req, res) => {
+router.put("/:id",async (req, res) => {
   let asus = await Asus.findById(req.params.id);
   asus.name = req.body.name;
   asus.Price = req.body.Price;
@@ -65,12 +65,12 @@ router.put("/:id",validateProduct,auth,admin,async (req, res) => {
   return res.send(asus);
 });
 //delete a record
-router.delete("/:id",auth,admin, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   let asus = await Asus.findByIdAndDelete(req.params.id);
   return res.send(asus);
 });
 //Insert a record
-router.post("/",validateProduct ,auth,admin,async (req, res) => {
+router.post("/",async (req, res) => {
   let asus = new Asus();
   asus.name = req.body.name;
   asus.Price = req.body.Price;
