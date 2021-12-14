@@ -1,4 +1,4 @@
 {
-    "db": "mongodb://localhost/AbeerTech",
-    "jwtPrivateKey": "hello"
+    "db": "mongodb+srv://abeer:abeer@cluster0.xb4hm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtPrivateKey": "jwtPrivateKey"
 }
